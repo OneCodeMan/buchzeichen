@@ -7,6 +7,7 @@ $user = $user['email'];
 if(isset($_POST['add_bookmark'])) {
     $bookmark = new Bookmark($con, $user);
     $bookmark->addBookmark($_POST['bookmark_name'], $_POST['bookmark_description'], $_POST['bookmark_url']);
+    header("Location: index.php");
 }
 ?>
 
@@ -44,7 +45,8 @@ if(isset($_POST['add_bookmark'])) {
                     // data rendering
                     $bookmarks_html .= "
                         <div class='bookmark-container'>
-                            <button class='delete_button btn-danger' id='bookmark$id'>X</button>
+                            <button class='edit_button btn-info' id='bookmark-edit-$id'>Edit</button>
+                            <button class='delete_button btn-danger' id='bookmark-delete-$id'>X</button>
                             <a href='$url' target='_blank' bookmark-url'>$name</a>
                             <p class='bookmark-description'>$description</p>
                         </div>
@@ -52,7 +54,7 @@ if(isset($_POST['add_bookmark'])) {
                 ?>
                 <script>
                     $(document).ready(function() {
-                        $('#bookmark<?php echo $id; ?>').on('click', function() {
+                        $('#bookmark-delete-<?php echo $id; ?>').on('click', function() {
                             $.post("includes/handlers/forms/delete_bookmark.php?bookmark_id=<?php echo $id; ?>", function() {
                                 location.reload();
                             });
