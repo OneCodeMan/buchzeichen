@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['login_button'])) {
-    $email = filter_var($_POST['log_email'], FILTER_SANITIZE_EMAIL); // sanitize email
+    $email = filter_var($_POST['login_email'], FILTER_SANITIZE_EMAIL); // sanitize email
 
     $_SESSION['login_email'] = $email; // store email into session variable
     $password = md5($_POST['login_password']);
@@ -18,5 +18,5 @@ if(isset($_POST['login_button'])) {
     } else {
         array_push($errors, "Email or password incorrect<br>");
     }
-
+}
 ?>
