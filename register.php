@@ -13,6 +13,19 @@ require 'includes/handlers/forms/login_handler.php';
     <script src="assets/js/register.js"></script>
 </head>
 <body>
+
+    <?php 
+        if(isset($_POST['register_button'])) {
+            echo '
+            <script>
+            $(document).ready(function() {
+                $("#welcome-container").hide();
+                $("#register-container").show();
+            });
+            </script>
+            ';
+        }
+    ?>
     <div class="container">
         <div class="title">
             <h1>Buchzeichen</h1>
@@ -35,10 +48,10 @@ require 'includes/handlers/forms/login_handler.php';
                 <h1 class="form-title">Register</h1>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="text" name="first_name" placeholder="First Name" minlength="1" required>
+                        <input type="text" name="first_name" placeholder="First Name" minlength="1" maxlength="60" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" name="last_name" placeholder="Last Name" minlength="1" required>
+                        <input type="text" name="last_name" placeholder="Last Name" minlength="1" maxlength="60" required>
                     </div>
                 </div>
 
@@ -49,6 +62,8 @@ require 'includes/handlers/forms/login_handler.php';
                     <div class="form-group col-md-6">
                         <input type="email" name="confirm_email" placeholder="Confirm Email" required>
                     </div>
+                    <?php if(in_array("Emails don't match!<br>", $errors)) echo "Emails don't match!<br>"?>
+                    <?php if(in_array("Email already in use<br>", $errors)) echo "Email already in use<br>"?>
                 </div>
 
                 <div class="form-row">
@@ -58,6 +73,8 @@ require 'includes/handlers/forms/login_handler.php';
                     <div class="form-group col-md-6">
                         <input type="password" name="confirm_password" placeholder="Confirm Password" minlength="5" required>
                     </div>
+                    <?php if(in_array("Your passwords do not match!<br>", $errors)) echo "Your passwords do not match!<br>"?>
+                    <?php if(in_array("Your password can only contain english characters or numbers<br>", $errors)) echo "Your password can only contain english characters or numbers<br>"?>
                 </div>
 
                 <input type="submit" name="register_button" value="Register" class="btn btn-dark" required>

@@ -41,7 +41,7 @@ if(isset($_POST['register_button'])) {
             }
         }
     } else {
-        array_push($errors, "Email already in use<br>");
+        array_push($errors, "Emails don't match!<br>");
     }
 
     // Passwords
