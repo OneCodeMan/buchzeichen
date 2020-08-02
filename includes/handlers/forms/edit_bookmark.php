@@ -9,9 +9,11 @@ $description = $bookmark['description'];
 $url = $bookmark['url'];
 
 if(isset($_POST['update_bookmark'])) {
+    $bookmark_id = $_POST['bookmark_id'];
     $name = $_POST['bookmark_name'];
     $description= $_POST['bookmark_description'];
     $url = $_POST['bookmark_url'];
+
     $bookmark_update_query = mysqli_query($con, "UPDATE bookmarks SET name='$name', description='$description', url='$url' WHERE id='$bookmark_id'");
     header("Location: ../../../index.php");
 }
@@ -23,7 +25,8 @@ if(isset($_POST['update_bookmark'])) {
     <body>
         <h1>Hi!</h1>
         <div class="container">
-            <form action="../../../index.php" class="update_bookmark_form" method="POST">
+            <form action="edit_bookmark.php" class="update_bookmark_form" method="POST">
+                <input type="text" name="bookmark_id" placeholder="id" style="display: none;" value="<?php echo $bookmark_id ?>">
                 <input type="text" name="bookmark_name" placeholder="name" value="<?php echo $name ?>" required>
                 <textarea name="bookmark_description" id="bookmark_description" placeholder="Enter a brief description of the URL"><?php echo $description; ?></textarea>
                 <input type="text" name="bookmark_url" id="bookmark_url" value="<?php echo $url ?>" placeholder="url" required>
