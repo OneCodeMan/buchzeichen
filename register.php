@@ -25,6 +25,17 @@ require 'includes/handlers/forms/login_handler.php';
             </script>
             ';
         }
+
+        if(isset($_POST['login_button'])) {
+            echo '
+            <script>
+            $(document).ready(function() {
+                $("#welcome-container").hide();
+                $("#login-container").show();
+            });
+            </script>
+            ';
+        }
     ?>
     <div class="container">
         <div class="title">
@@ -93,6 +104,7 @@ require 'includes/handlers/forms/login_handler.php';
                 <div class="form-group">
                     <input type="password" name="login_password" placeholder="Password">
                 </div>
+                <?php if(in_array("Email or password incorrect<br>", $errors)) echo "Email or password incorrect<br>"?>
                 <input type="submit" name="login_button" value="Login" class="btn btn-dark"> 
             </form>
             <a href="#" id="login-back-to-welcome">Go Back</a>

@@ -48,15 +48,15 @@ if(isset($_POST['update_bookmark'])) {
                     <input type="text" name="bookmark_id" placeholder="id" style="display: none;" value="<?php echo $bookmark_id ?>">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" name="bookmark_name" placeholder="name" value="<?php echo $name ?>" required>
+                        <input type="text" class="form-control" name="bookmark_name" placeholder="name" value="<?php echo $name ?>" minlength="2" maxlength="70" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Description</label>
-                        <input type="text" class="form-control" name="bookmark_description" id="bookmark_description" placeholder="description" value="<?php echo $description; ?>" required>
+                        <input type="text" class="form-control" name="bookmark_description" id="bookmark_description" maxlength="100" placeholder="description (optional)" value="<?php echo $description; ?>">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">URL</label>
-                        <input type="text" class="form-control" name="bookmark_url" id="bookmark_url" value="<?php echo $url ?>" placeholder="url" required>
+                        <input type="url" pattern="https://.*" name="bookmark_url" id="bookmark_url" placeholder="URL (example: https://google.com)"  value="<?php echo $url ?>" minlength="2" maxlength="300" placeholder="url" required>
                     </div>
                     <input type="submit" class="btn btn-primary" name="update_bookmark" id="update_bookmark" value="Update Bookmark">
                     <br>

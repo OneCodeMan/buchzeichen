@@ -5,10 +5,18 @@ include("includes/classes/Bookmark.php");
 
 $first_name = $user['first_name'];
 $user = $user['email'];
+$invalid_url_message = "";
 if(isset($_POST['add_bookmark'])) {
-    $bookmark = new Bookmark($con, $user);
-    $bookmark->addBookmark($_POST['bookmark_name'], $_POST['bookmark_description'], $_POST['bookmark_url']);
-    header("Location: index.php");
+
+       if (isDomainAvailable($_POST['bookmark_url'])) {
+            $bookmark = new Bookmark($con, $user);
+            $bookmark->addBookmark($_POST['bookmark_name'], $_POST['bookmark_description'], $_POST['bookmark_url']);
+            header("Location: index.php");
+            echo "Entry added";
+       } else {
+            $invalid_url_message = "You have entered an invalid URL";
+       }
+
 }
 ?>
     <div class="container">
@@ -17,10 +25,12 @@ if(isset($_POST['add_bookmark'])) {
             <h2 class="bookmarks-form-title">Your Bookmarks</h2>
             <div class="col-md-9 add-bookmark-form-div">
                 <form action="index.php" class="add_bookmark_form" method="POST">
-                    <input type="text" name="bookmark_name" placeholder="name" required>
-                    <input type="text" name="bookmark_description" id="bookmark_description" placeholder="description" required>
-                    <input type="text" name="bookmark_url" id="bookmark_url" placeholder="url" required>
+                    <input type="text" name="bookmark_name" placeholder="name" minlength="2" maxlength="70" required>
+                    <input type="text" name="bookmark_description" id="bookmark_description" maxlength="100" placeholder="description (optional)">
+                    <input type="url" pattern="https?://.+" name="bookmark_url" id="bookmark_url" value="https://" placeholder="URL (example: https://google.com)" minlength="2" maxlength="300" required>
                     <input type="submit" class="btn btn-warning" name="add_bookmark" id="add_bookmark" value="Add Bookmark">
+                    <br>
+                    <?php echo $invalid_url_message; ?>
                     <br>
                 </form>
             </div>
