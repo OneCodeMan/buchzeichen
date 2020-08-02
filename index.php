@@ -41,11 +41,12 @@ if(isset($_POST['add_bookmark'])) {
                     $name = $row['name'];
                     $description = $row['description'];
                     $url = $row['url'];
+                    $belongs_to = $row['belongs_to'];
 
                     // data rendering
                     $bookmarks_html .= "
                         <div class='bookmark-container'>
-                            <a href='includes/handlers/forms/edit_bookmark.php?bookmark_id=$id'>Edit</a>
+                            <a href='includes/handlers/forms/edit_bookmark.php?bookmark_id=$id&belongs_to=$belongs_to'>Edit</a>
                             <button class='delete_button btn-danger' id='bookmark-delete-$id'>X</button>
                             <a href='$url' target='_blank' bookmark-url'>$name</a>
                             <p class='bookmark-description'>$description</p>

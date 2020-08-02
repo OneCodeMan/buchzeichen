@@ -2,20 +2,28 @@
 require '../../../config/config.php';
 
 $bookmark_id = $_GET['bookmark_id'];
-$bookmark_fetch_existing_row_query = mysqli_query($con, "SELECT * FROM bookmarks WHERE id='$bookmark_id'");
-$bookmark = mysqli_fetch_array($bookmark_fetch_existing_row_query);
-$name = $bookmark['name'];
-$description = $bookmark['description'];
-$url = $bookmark['url'];
+$bookmark_belongs_to = $_GET['belongs_to'];
+$bookmark_fetch_existing_row_query = mysqli_query($con, "SELECT * FROM bookmarks WHERE id='$bookmark_id' AND belongs_to='$bookmark_belongs_to'");
+$bookmark_num_rows = mysqli_num_rows($bookmark_fetch_existing_row_query);
 
-if(isset($_POST['update_bookmark'])) {
-    $bookmark_id = $_POST['bookmark_id'];
-    $name = $_POST['bookmark_name'];
-    $description= $_POST['bookmark_description'];
-    $url = $_POST['bookmark_url'];
-
-    $bookmark_update_query = mysqli_query($con, "UPDATE bookmarks SET name='$name', description='$description', url='$url' WHERE id='$bookmark_id'");
+// only show update form if the bookmark is owned by the user
+if($bookmark_num_rows == 0) {
     header("Location: ../../../index.php");
+} else {
+    $bookmark = mysqli_fetch_array($bookmark_fetch_existing_row_query);
+    $name = $bookmark['name'];
+    $description = $bookmark['description'];
+    $url = $bookmark['url'];
+
+    if(isset($_POST['update_bookmark'])) {
+        $bookmark_id = $_POST['bookmark_id'];
+        $name = $_POST['bookmark_name'];
+        $description= $_POST['bookmark_description'];
+        $url = $_POST['bookmark_url'];
+
+        $bookmark_update_query = mysqli_query($con, "UPDATE bookmarks SET name='$name', description='$description', url='$url' WHERE id='$bookmark_id'");
+        header("Location: ../../../index.php");
+    }
 }
 ?>
 
