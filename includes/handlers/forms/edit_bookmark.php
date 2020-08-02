@@ -11,7 +11,13 @@ $name = $bookmark['name'];
 $description = $bookmark['description'];
 $url = $bookmark['url'];
 
+// if user tries to edit a book that isn't theirs
+if(!($bookmark_num_rows > 0)) {
+    header("Location: ../../../index.php");
+}
+
 if(isset($_POST['update_bookmark'])) {
+
     $bookmark_id = $_POST['bookmark_id'];
     $name = $_POST['bookmark_name'];
     $description= $_POST['bookmark_description'];
