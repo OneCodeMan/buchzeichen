@@ -14,7 +14,7 @@ if(isset($_POST['add_bookmark'])) {
     <div class="container">
 
         <div id="bookmarks">
-            <h2 class="your-bookmarks-title">Your Bookmarks</h2>
+            <h2 class="bookmarks-form-title">Your Bookmarks</h2>
             <div class="col-md-9 add-bookmark-form-div">
                 <form action="index.php" class="add_bookmark_form" method="POST">
                     <input type="text" name="bookmark_name" placeholder="name" required>

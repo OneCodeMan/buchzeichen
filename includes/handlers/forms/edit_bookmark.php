@@ -1,5 +1,6 @@
 <?php 
-require '../../../config/config.php';
+// require '../../../config/config.php';
+require '../../header.php';
 
 $bookmark_id = $_GET['bookmark_id'];
 $bookmark_belongs_to = $_GET['belongs_to'];
@@ -31,17 +32,37 @@ if(isset($_POST['update_bookmark'])) {
 <html>
 <head>
     <title>hellooo</title>
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../../assets/js/bootstrap.js"></script>
+    
+    <!-- CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/styles.css">
     <body>
-        <h1>Hi!</h1>
         <div class="container">
-            <form action="edit_bookmark.php" class="update_bookmark_form" method="POST">
-                <input type="text" name="bookmark_id" placeholder="id" style="display: none;" value="<?php echo $bookmark_id ?>">
-                <input type="text" name="bookmark_name" placeholder="name" value="<?php echo $name ?>" required>
-                <textarea name="bookmark_description" id="bookmark_description" placeholder="Enter a brief description of the URL"><?php echo $description; ?></textarea>
-                <input type="text" name="bookmark_url" id="bookmark_url" value="<?php echo $url ?>" placeholder="url" required>
-                <input type="submit" name="update_bookmark" id="update_bookmark" value="Update">
-                <br>
-            </form>
+            <h2 class="bookmarks-form-title">Edit Bookmark</h1>
+            <div class="col-md-5 update-bookmark-form-div">
+                <form action="edit_bookmark.php" class="update_bookmark_form" method="POST">
+                    <input type="text" name="bookmark_id" placeholder="id" style="display: none;" value="<?php echo $bookmark_id ?>">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control" name="bookmark_name" placeholder="name" value="<?php echo $name ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <input type="text" class="form-control" name="bookmark_description" id="bookmark_description" placeholder="description" value="<?php echo $description; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">URL</label>
+                        <input type="text" class="form-control" name="bookmark_url" id="bookmark_url" value="<?php echo $url ?>" placeholder="url" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary" name="update_bookmark" id="update_bookmark" value="Update Bookmark">
+                    <br>
+                </form>
+            </div>
+            
         </div>
     </body>
 </head>
