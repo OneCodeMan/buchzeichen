@@ -45,7 +45,7 @@ if(isset($_POST['add_bookmark'])) {
                     // data rendering
                     $bookmarks_html .= "
                         <div class='bookmark-container'>
-                            <button class='edit_button btn-info' id='bookmark-edit-$id'>Edit</button>
+                            <a href='includes/handlers/forms/edit_bookmark.php?bookmark_id=$id'>Edit</a>
                             <button class='delete_button btn-danger' id='bookmark-delete-$id'>X</button>
                             <a href='$url' target='_blank' bookmark-url'>$name</a>
                             <p class='bookmark-description'>$description</p>

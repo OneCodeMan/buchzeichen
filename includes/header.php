@@ -1,5 +1,13 @@
 <?php 
-require 'config/config.php';
+ob_start();
+session_start();
+$con = mysqli_connect("localhost", "root", "", "buchzeichen");
+
+if(mysqli_connect_errno()) {
+    echo "Failed to connect: " . mysqli_connect_errno();
+}
+
+// require '../../../config/config.php';
 
 // if user is not logged in, take them to register.php
 if (isset($_SESSION['email'])) {
