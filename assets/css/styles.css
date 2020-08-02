@@ -1,0 +1,55 @@
+/* Header */
+
+/* General */ 
+body {
+    background: #16202C;
+}
+
+.container {
+    color: #fff;
+    margin-top: 20px auto;
+}
+
+/* Add Bookmark Form */
+.add-bookmark-form-div {
+    margin: 0 auto;
+}
+
+/* List of bookmarks */
+.your-bookmarks-title {
+    text-align: center;
+    font-size: 50px;
+}
+
+#bookmarks {
+    padding: 30px;
+}
+
+/* Individual bookmark */
+.bookmark-container {
+    padding: 12px;
+    border-radius: 3px;
+}
+
+.bookmark-container:hover {
+    background: #36558F;
+}
+
+.bookmark-name {
+    font-size: 35px;
+}
+
+.bookmark-description {
+    font-size: 23px;
+}
+
+hr {
+    color: #253441;
+    background-color: #253441;
+    height: 3px;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #1DA2F1;
+}
