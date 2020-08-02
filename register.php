@@ -35,28 +35,28 @@ require 'includes/handlers/forms/login_handler.php';
                 <h1 class="form-title">Register</h1>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="text" name="first_name" placeholder="First Name" required>
+                        <input type="text" name="first_name" placeholder="First Name" minlength="1" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" name="last_name" placeholder="Last Name" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" name="confirm_email" placeholder="Confirm Email" required>
+                        <input type="text" name="last_name" placeholder="Last Name" minlength="1" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                        <input type="email" name="confirm_email" placeholder="Confirm Email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="password" name="password" placeholder="Password" minlength="5" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" minlength="5" required>
                     </div>
                 </div>
 
