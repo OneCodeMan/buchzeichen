@@ -9,9 +9,9 @@ $errors = array(); // this array collects form errors. if it's not empty, user c
 
 if(isset($_POST['register_button'])) {
 
-    $first_name = strip_tags($_POST['first_name']); 
-    $first_name = str_replace(' ', '', $first_name);
-    $first_name = ucfirst(strtolower($first_name));
+    $first_name = strip_tags($_POST['first_name']); // strips HTML tags
+    $first_name = str_replace(' ', '', $first_name); // replace spaces with empty string
+    $first_name = ucfirst(strtolower($first_name)); //capitalize
 
     $last_name = strip_tags($_POST['last_name']);
     $last_name = str_replace(' ', '', $last_name);
