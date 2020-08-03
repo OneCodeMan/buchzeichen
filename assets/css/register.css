@@ -54,6 +54,11 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
     display: none;
 }
 
+.popular-link {
+    text-decoration: underline;
+    margin: 2px;
+}
+
 a, a:hover {
     color: white;
 }

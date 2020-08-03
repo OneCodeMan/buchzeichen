@@ -51,6 +51,18 @@ require 'includes/handlers/forms/login_handler.php';
                 Buchzeichen makes sure you have important bookmarks saved, convenient to access. 
                 Consume smart.
             </p>
+            <p>Popular bookmarks:</p>
+            <a class="popular-link" href="https://google.com">google</a>
+            <a class="popular-link" href="https://youtube.com">youtube</a>
+            <a class="popular-link" href="https://ufc.com">UFC</a>
+            <a class="popular-link" href="https://reddit.com">reddit</a>
+            <a class="popular-link" href="https://medium.com">medium</a>
+            <a class="popular-link" href="https://yahoo.ca">yahoo</a>
+            <a class="popular-link" href="https://linkedin.com">linkedin</a>
+            <a class="popular-link" href="https://amazon.ca">amazon</a>
+            <a class="popular-link" href="https://netflix.ca">netflix</a>
+            <a class="popular-link" href="https://jetzt.de">news</a>
+            <br><br>
             <button type="button" id="register-page-btn" class="btn btn-dark">Register</button>
             <button type="button" id="login-page-btn" class="btn btn-dark">Login</button>
         </div>
